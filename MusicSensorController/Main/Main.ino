@@ -39,7 +39,12 @@ void loop() {
     int distanceUS3 = calculateDistance(trigPinUS3, echoPinUS3);
     int distanceUS4 = calculateDistance(trigPinUS4, echoPinUS4);
 
-    
-    Serial.println(distanceUS1);
+    Serial.print(distanceUS1);
+    Serial.print(",");
+    Seria.print(distanceUS2);
+    Serial.print(",");
+    Seria.print(distanceUS3);
+    Seria.print(",")
+    Serial.println(distanceUS4)
     delay(1000);
 }
