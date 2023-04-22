@@ -1,6 +1,6 @@
 const int triggerPins[6] = {2, 3, 4, 5, 6, 7};
 const int echoPins[6] = {8, 9, 10, 11, 12, 13};
-float distances[6];
+float tempDistance;
 
 void setup() {
     Serial.begin(9600);
@@ -20,4 +20,10 @@ float getDistance(int triggerPin, int echoPin) {
     return (duration(*0.034/2));
 }
 
+void loop() {
+    for(int i = 0; i < 6; i++) {
+        tempDistance = getDistance(triggerPins[i], echoPins[i]);
+        
+    }
+}
 
