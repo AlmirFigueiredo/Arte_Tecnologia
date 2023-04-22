@@ -23,7 +23,13 @@ float getDistance(int triggerPin, int echoPin) {
 void loop() {
     for(int i = 0; i < 6; i++) {
         tempDistance = getDistance(triggerPins[i], echoPins[i]);
-        
+        if(i < 5) {
+            Serial.print(distance, 2);
+            Serial.print(",");
+        } else {
+            Serial.println(distance, 2);
+        }
     }
+    delay(1000);
 }
 
