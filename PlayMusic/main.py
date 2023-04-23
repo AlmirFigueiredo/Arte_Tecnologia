@@ -8,4 +8,5 @@ mixer.init()
 
 group1 = [mixer.Sound(f"Song{i}.wav") for i in range(1, 9)]
 group2 = [mixer.Sound(f"Song{i}.wav") for i in range(10, 17)]
+contemplativ_song = mixer.Sound("SoundGroups/Contemplativa.mp3") 
 
