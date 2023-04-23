@@ -9,7 +9,7 @@ mixer.init()
 MAX_DISTANCE = 200
 MIN_DISTANCE = 10
 group1 = [mixer.Sound(f"Song{i}.wav") for i in range(1, 9)]
-group2 = [mixer.Sound(f"Song{i}.wav") for i in range(10, 17)]
+group2 = [mixer.Sound(f"Song{i}.wav") for i in range(9, 17)]
 contemplativ_song = mixer.Sound("SoundGroups/Contemplativa.mp3") 
 played_songs = []
 last_played_song = None
@@ -34,3 +34,6 @@ def select_song(gruop, played_songs):
 while True:
     imported_data = s.readline().decode("utf-8").strip()
     distances = [float(x) for x in imported_data.split(",")]
+    
+    is_in_middle = ((distances[2] > MIN_DISTANCE and distances[2] < MAX_DISTANCE)or(distances[3] > MIN_DISTANCE and distances[3] < MAX_DISTANCE))
+
