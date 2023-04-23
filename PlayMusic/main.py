@@ -6,9 +6,6 @@ from time import sleep
 s = serial.Serial("dev/ttyACM0", 9600)
 mixer.init()
 
-group1 = []
-group2 = []
+group1 = [mixer.Sound(f"Song{i}.wav") for i in range(1, 9)]
+group2 = [mixer.Sound(f"Song{i}.wav") for i in range(10, 17)]
 
-group1.append(mixer.Sound("SoundGroups/Birds1.wav"))
-
-    
