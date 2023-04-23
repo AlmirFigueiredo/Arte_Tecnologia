@@ -6,6 +6,8 @@ from time import sleep
 s = serial.Serial("dev/ttyACM0", 9600)
 mixer.init()
 
+MAX_DISTANCE = 200
+MIN_DISTANCE = 10
 group1 = [mixer.Sound(f"Song{i}.wav") for i in range(1, 9)]
 group2 = [mixer.Sound(f"Song{i}.wav") for i in range(10, 17)]
 contemplativ_song = mixer.Sound("SoundGroups/Contemplativa.mp3") 
@@ -29,3 +31,6 @@ def select_song(gruop, played_songs):
     selected_song = random.choice(available_songs)
     play_song(selected_song)
 
+while True:
+    imported_data = s.readline().decode("utf-8").strip()
+    distances = [float(x) for x in imported_data.split(",")]
