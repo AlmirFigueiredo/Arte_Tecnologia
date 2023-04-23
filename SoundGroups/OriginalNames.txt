@@ -7,3 +7,13 @@ Ocean3 => Song5
 Wind1 => Song6
 Wind2 => Song7
 Wind3 => Song8
+
+Group2:
+Birds Noise 01 => Song9
+Birds Noise 02 => Song10
+Ocean Noise 01 => Song11
+Ocean Noise 02 => Song12
+People 01 => Song13
+People 02 => Song14
+Wind Noise 01 => Song15
+Wind Noise 02 => Song16
