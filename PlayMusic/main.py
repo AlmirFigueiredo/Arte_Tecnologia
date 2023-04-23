@@ -13,4 +13,9 @@ played_songs = []
 last_played_song = None
 contemplativ_song_playing = False
 
+def play_song(song):
+    global last_played_song
+    last_played_song = song
+    sound.play()
+
 
