@@ -16,6 +16,16 @@ contemplativ_song_playing = False
 def play_song(song):
     global last_played_song
     last_played_song = song
+    played_songs.append(song)
     sound.play()
 
+def select_song(gruop, played_songs):
+    available_songs = []
+    for song in group:
+        if song not in played_songs:
+            available_songs.append(song)
+    if not available_songs:
+        return None
+    selected_song = random.choice(available_songs)
+    play_song(selected_song)
 
