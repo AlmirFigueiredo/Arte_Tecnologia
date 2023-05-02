@@ -10,6 +10,8 @@ const int ledPins[] = {10, 11, 12, 13};
 const int txPins[] = {A0, A1, 14, 15};
 const int rxPins[] = {A2, A3, A4, A5};
 
+const int distanciaDeAproximacao = 30;
+
 //Criar objetos das bibliotecas do som:
 DFRobotDFPlayerMini dPlayers[numSensors];
 SoftwareSerial mySofwareSerial[numSensors];
@@ -31,6 +33,17 @@ void setup() {
         //Volume (Vou considerar que 20 e um bom numero):
         dPlayers[i].volume(20);
     }
+}
+float getDistance(int trigPin, int echoPin) {
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  long duration = pulseIn(echoPin, HIGH);
+  float distance = duration * 0.034 / 2;
+  return distance;
+}
+void loop() {
+
 }
 
 
