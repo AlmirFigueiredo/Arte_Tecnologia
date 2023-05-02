@@ -10,7 +10,8 @@ const int ledPins[] = {10, 11, 12, 13};
 const int txPins[] = {A0, A1, 14, 15};
 const int rxPins[] = {A2, A3, A4, A5};
 
-const int distanciaDeAproximacao = 30;
+//Vou considerar 30cm a distancia de aproximacao, porem devemos conversar com os artistas para definirmos qual e a distancia ideal
+const int aproximationDistance = 30;
 
 //Criar objetos das bibliotecas do som:
 DFRobotDFPlayerMini dPlayers[numSensors];
@@ -43,7 +44,22 @@ float getDistance(int trigPin, int echoPin) {
   return distance;
 }
 void loop() {
+    for(int i = 0; i < numSensors; i++) {
+        float distance = getDistance(trigPin[i], echoPin[i]);
+        if(distance <= aproximationDistance) {
+            digitalWrite(ledPins[i], HIGH); //Ligar led da respectiva casa
+            if(!dPlayers[i].isPlaying()) {
+                dPlayers[i].play(i+1); //Reproduzir som da respectiva casa
+            } else {
+                digitalWrite(ledPins[i], LOW);
+                if(dPlayers.isPlaying()) {
+                    dPlayers[i].stop();
+                }
+            }
+        }
+    }
 
+    delay(100); //Pra evitar leituras erradas
 }
 
 
