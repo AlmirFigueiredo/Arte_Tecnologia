@@ -37,6 +37,10 @@ def select_song(group, played_songs):
     selected_song = random.choice(available_songs)
     play_song(selected_song)
 
+def reset_played_songs():
+    global played_songs
+    played_songs = []
+
 while True:
     imported_data = s.readline().decode("utf-8").strip()
     distances = [float(x) for x in imported_data.split(",")]
@@ -51,18 +55,24 @@ while True:
     visitors_total = visitors_left + visitors_middle + visitors_right
     crowded = visitors_total > 1
 
-    if is_in_left:
-        select_song(group1, played_songs)
-    
-    if is_in_middle:
-        if crowded:
-            select_song(group2, played_songs)
+    if is_in_middle and not contemplative_song_playing:
+        if last_played_song and mixer.get_busy():  
+            pass  
         else:
-            select_song(group1, played_songs)
+            contemplative_song_playing = True
+            play_song(contemplativ_song)
+    elif not is_in_middle and contemplative_song_playing:
+        contemplativ_song_playing = False
+        contemplativ_song.stop()
 
-    if is_in_right:
-        if crowded:
-            select_song(group2, played_songs)
-        else: 
-            select_song(group2, played_songs)
+    if not is_in_middle and not mixer.get_busy():
+        if is_in_left or is_in_right:
+            if len(played_songs) == 16:
+                reset_played_songs()
+            if len(played_songs) < 8:
+                selected_song = select_song(group1, played_songs)
+            elif len(played_songs) >= 8 and len(played_songs) < 16:
+                selected_song = select_song(group2, played_songs)
+            if selected_song:
+                sleep(selected_song.get_length())
     sleep(1)
