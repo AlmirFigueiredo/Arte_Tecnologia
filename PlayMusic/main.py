@@ -15,7 +15,7 @@ played_songs = []
 song_playing = False
 crowded = False
 last_played_song = None
-contemplativ_song_playing = False
+contemplative_song_playing = False
 visitors_left = 0
 visitors_right = 0
 visitors_middle = 0
@@ -66,6 +66,7 @@ while True:
         contemplativ_song.stop()
 
     if not is_in_middle and not mixer.get_busy():
+        selected_song = None
         if is_in_left or is_in_right:
             if len(played_songs) == 16:
                 reset_played_songs()
