@@ -3,13 +3,13 @@ import random
 from pygame import mixer
 from time import sleep
 
-s = serial.Serial("dev/ttyACM0", 9600)
+s = serial.Serial("/dev/ttyACM0", 9600)
 mixer.init()
 
 MAX_DISTANCE = 70
 MIN_DISTANCE = 10
-group1 = [mixer.Sound(f"Song{i}.wav") for i in range(1, 9)]
-group2 = [mixer.Sound(f"Song{i}.wav") for i in range(9, 17)]
+group1 = [mixer.Sound(f"SoundGroups/Group1/Song{i}.wav") for i in range(1, 9)]
+group2 = [mixer.Sound(f"SoundGroups/Group2/Song{i}.wav") for i in range(9, 17)]
 contemplativ_song = mixer.Sound("SoundGroups/Contemplativa.mp3") 
 played_songs = []
 song_playing = False
