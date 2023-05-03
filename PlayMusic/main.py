@@ -48,8 +48,9 @@ while True:
     visitors_left = visitors_left + 1 if is_in_left else max(0, visitors_left - 1) # Pois o menor valor possivel e 0
     visitors_middle = visitors_middle + 1 if is_in_middle else max(0, visitors_middle - 1)
     visitors_right = visitors_right + 1 if is_in_right else max(0, visitors_right - 1)
+    visitors_total = visitors_left + visitors_middle + visitors_right
+    crowded = visitors_total > 1
 
-    
     if is_in_left:
         select_song(group1, played_songs)
     
@@ -64,3 +65,4 @@ while True:
             select_song(group2, played_songs)
         else: 
             select_song(group2, played_songs)
+    sleep(1)
