@@ -19,6 +19,7 @@ contemplativ_song_playing = False
 visitors_left = 0
 visitors_right = 0
 visitors_middle = 0
+visitors_total = 0
 
 def play_song(song):
     global last_played_song
@@ -44,24 +45,11 @@ while True:
     is_in_left = ((distances[0] > MIN_DISTANCE and distances[0] < MAX_DISTANCE)or(distances[1] > MIN_DISTANCE and distances[1] < MAX_DISTANCE))
     is_in_right = ((distances[4] > MIN_DISTANCE and distances[4] < MAX_DISTANCE) or (distances[5] > MIN_DISTANCE and distances[5] < MAX_DISTANCE))
 
-    if is_in_middle:
-        visitors_middle += 1
-    else:
-        visitors_middle = max(0, visitors_middle-1) #Pois o menor valor possivel e 0
-    
-    if is_in_left:
-        visitors_left += 1
-    else:
-        visitors_left = max(0, visitors_left-1)
-    
-    if is_in_right:
-        visitors_right += 1
-    else:
-        visitors_right = max(0, visitors_right-1)
-    
-    
+    visitors_left = visitors_left + 1 if is_in_left else max(0, visitors_left - 1) # Pois o menor valor possivel e 0
+    visitors_middle = visitors_middle + 1 if is_in_middle else max(0, visitors_middle - 1)
+    visitors_right = visitors_right + 1 if is_in_right else max(0, visitors_right - 1)
 
-
+    
     if is_in_left:
         select_song(group1, played_songs)
     
