@@ -12,7 +12,7 @@ group1 = [mixer.Sound(f"Song{i}.wav") for i in range(1, 9)]
 group2 = [mixer.Sound(f"Song{i}.wav") for i in range(9, 17)]
 contemplativ_song = mixer.Sound("SoundGroups/Contemplativa.mp3") 
 played_songs = []
-song_playing = False
+songs_playing = []
 crowded = False
 last_played_song = None
 contemplative_song_playing = False
@@ -25,7 +25,13 @@ def play_song(song):
     global last_played_song
     last_played_song = song
     played_songs.append(song)
+    songs_playing.append(song)
     song.play()
+
+def stop_all_songs():
+    for song in songs_playing:
+        song.stop()
+    songs_playing.clear()
 
 def select_song(group, played_songs):
     available_songs = []
@@ -56,16 +62,15 @@ while True:
     crowded = visitors_total > 1
 
     if is_in_middle and not contemplative_song_playing:
-        if last_played_song and mixer.get_busy():  
-            pass  
-        else:
-            contemplative_song_playing = True
-            play_song(contemplativ_song)
+        stop_all_songs()
+        contemplative_song_playing = True
+        play_song(contemplativ_song)
     elif not is_in_middle and contemplative_song_playing:
-        contemplativ_song_playing = False
         contemplativ_song.stop()
+        songs_playing.remove(contemplativ_song)
+        contemplative_song_playing = False
 
-    if not is_in_middle and not mixer.get_busy():
+    if not is_in_middle and not contemplative_song_playing:
         selected_song = None
         if is_in_left or is_in_right:
             if len(played_songs) == 16:
@@ -74,6 +79,5 @@ while True:
                 selected_song = select_song(group1, played_songs)
             elif len(played_songs) >= 8 and len(played_songs) < 16:
                 selected_song = select_song(group2, played_songs)
-            if selected_song:
-                sleep(selected_song.get_length())
     sleep(1)
+
