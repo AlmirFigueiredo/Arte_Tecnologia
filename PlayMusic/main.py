@@ -8,9 +8,9 @@ mixer.init()
 
 MAX_DISTANCE = 200
 MIN_DISTANCE = 10
-group1 = [mixer.Sound(f"../SoundGroups/group1/Song{i}.wav") for i in range(1, 9)]
-group2 = [mixer.Sound(f"../SoundGroups/group2/Song{i}.wav") for i in range(9, 17)]
-contemplativ_song = mixer.Sound("../SoundGroups/Contemplativa.wav") 
+group1 = [mixer.Sound(f"SoundGroups/group1/Song{i}.wav") for i in range(1, 9)]
+group2 = [mixer.Sound(f"SoundGroups/group2/Song{i}.wav") for i in range(9, 17)]
+contemplativ_song = mixer.Sound("SoundGroups/Contemplativa.wav") 
 played_songs = []
 songs_playing = []
 crowded = False
