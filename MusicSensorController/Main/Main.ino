@@ -1,5 +1,5 @@
-const int triggerPins[6] = {2, 3, 4, 5, 6, 7};
-const int echoPins[6] = {8, 9, 10, 11, 12, 13};
+const int triggerPins[6] = {2, 4, 6, 8, 10, 12};
+const int echoPins[6] = {3, 5, 7, 9, 11, 13};
 float tempDistance;
 
 void setup() {
