@@ -4,17 +4,17 @@ import pygame
 
 SERIAL_PORT = "/dev/ttyACM0"
 SERIAL_BAUDRATE = 9600
-DISTANCIA_MINIMA = 2
-DISTANCIA_MAXIMA = 30
+DISTANCIA_MINIMA = 5
+DISTANCIA_MAXIMA = 20
 
 playlist = {
-    "A": ["musicaA1.mp3", "musicaA2.mp3", "musicaA3.mp3"],
-    "B": ["musicaB1.mp3", "musicaB2.mp3", "musicaB3.mp3", "musicaB4.mp3"],
-    "C": ["musicaC1.mp3", "musicaC2.mp3", "musicaC3.mp3"],
-    "AB": ["musicaAB1.mp3", "musicaAB2.mp3", "musicaAB3.mp3"],
-    "AC": ["musicaAC1.mp3", "musicaAC2.mp3", "musicaAC3.mp3"],
-    "BC": ["musicaBC1.mp3", "musicaBC2.mp3", "musicaBC3.mp3"],
-    "ABC": ["musicaABC1.mp3"]
+    "A": ["SoundGroups/A/one.wav", "SoundGroups/A/two.wav", "SoundGroups/A/three.wav"],
+    "B": ["SoundGroups/B/one.wav", "SoundGroups/B/two.wav", "SoundGroups/B/three.wav", "SoundGroups/B/four.wav"],
+    "C": ["SoundGroups/C/one.wav", "SoundGroups/C/two.wav", "SoundGroups/C/three.wav"],
+    "AB": ["SoundGroups/AB/one.wav", "SoundGroups/AB/two.wav", "SoundGroups/AB/three.wav"],
+    "AC": ["SoundGroups/AC/one.wav", "SoundGroups/AC/two.wav", "SoundGroups/AC/three.wav"],
+    "BC": ["SoundGroups/BC/one.wav", "SoundGroups/BC/two.wav", "SoundGroups/BC/three.wav"],
+    "ABC": ["SoundGroups/ABC/Contemplativa.wav"]
 }
 
 musicas_tocadas = {
